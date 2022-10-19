@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemDefinitionGroup Condition="'$(Microsoft_AI_DirectML_SkipIncludeDir)' != 'true'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(PlatformTarget)'=='x64' AND '$(Microsoft_AI_DirectML_SkipLink)' != 'true'">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)..\bin\x64-win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectML.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="('$(PlatformTarget)'=='Win32' Or '$(PlatformTarget)'=='x86') AND '$(Microsoft_AI_DirectML_SkipLink)' != 'true'">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)..\bin\x86-win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectML.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(PlatformTarget)'=='ARM' AND '$(Microsoft_AI_DirectML_SkipLink)' != 'true'">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)..\bin\arm-win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectML.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(PlatformTarget)'=='ARM64' AND '$(Microsoft_AI_DirectML_SkipLink)' != 'true'">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)..\bin\arm64-win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectML.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemGroup Condition="'$(PlatformTarget)'=='x64'">
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x64-win\DirectML.dll" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x64-win\DirectML.pdb" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x64-win\DirectML.Debug.dll" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x64-win\DirectML.Debug.pdb" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PlatformTarget)'=='Win32' Or '$(PlatformTarget)'=='x86'">
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x86-win\DirectML.dll" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x86-win\DirectML.pdb" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x86-win\DirectML.Debug.dll" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\x86-win\DirectML.Debug.pdb" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PlatformTarget)'=='ARM'">
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm-win\DirectML.dll" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm-win\DirectML.pdb" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm-win\DirectML.Debug.dll" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm-win\DirectML.Debug.pdb" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PlatformTarget)'=='ARM64'">
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm64-win\DirectML.dll" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm64-win\DirectML.pdb" Condition="'$(Microsoft_AI_DirectML_SkipLibraryCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm64-win\DirectML.Debug.dll" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\bin\arm64-win\DirectML.Debug.pdb" Condition="'$(Microsoft_AI_DirectML_SkipDebugLayerCopy)' != 'true'">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
